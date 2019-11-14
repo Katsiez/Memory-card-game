@@ -80,7 +80,18 @@ body {
     border-color: palevioletred;
 }
 .card-front {
+    background-color: white;
+    border-color: yellow;
     transform: rotateY(180deg);
+}
+
+.card-value {
+    transform: scale(.9);
+}
+
+
+.card-front:hover .card-value{
+    transform: scale(1);
 }
 .paw {
     align-self: center;
