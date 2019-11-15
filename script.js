@@ -4,5 +4,6 @@ if(document.readyState ==='loading') {
     ready();
 }
 function ready() {
-    let overlays = document.getElementsByClassName('overlay-text');
+    let overlays = Array.from(document.getElementsByClassName('overlay-text'));
+    let cards = Array.from(document.getElementsByClassName('card'));
 }
