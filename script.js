@@ -87,6 +87,12 @@ class MatchingPups {
     cardMatch(card1, card2) {
         this.matchedCards.push(card1);
         this.matchedCards.push(card2);
+        card1.classList.add('matched');
+        card2.classList.add('matched');
+        this.audioController.match();
+
+        if(this.matchedCards.length ===this.cardsArray)
+        this.victory();
     }
     cardMisMatch(card) {
 
