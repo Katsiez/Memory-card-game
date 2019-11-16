@@ -50,12 +50,19 @@ class MatchingPups {
         setTimeout(() => {
            this.audioController.startMusic();
            this.shuffleCards();
-           this.countdown = this.startCountdown();
+           this.countDown = this.startCountDown();
            this.busy = false; 
         }, 500);
         this.hideCards();
         this.timer.innerText = this.timeRemaining;
         this.ticker.innerText = this.totalClicks;
+    }
+    hideCards() {
+        this.cardsArray.forEach(card => {
+            card.classlist.remove('visible');
+            card.classList.remove('matched');
+            card.classList.remove('mismatch');
+        });
     }
 
     flipCard(card) {
@@ -65,6 +72,17 @@ class MatchingPups {
             this.ticker.innerText = this.totalClicks;
             card.classList.add('visible');
         }
+    }
+    startCountDown() {
+        return setInterval(() => {
+           this.timeRemaining--;
+           this.timer.innerText = this.timeRemaining;
+           if(this.timeRemaining ===0)
+           this.gameOver();  
+        }, 1000);
+    }
+    gameOver() {
+        clearInterval(this.countDown);
     }
 
     //Here I've used quite a few resources; for the shuffle I have used the Fisher-Yates shuffle algorithm, to be found here / https://www.geeksforgeeks.org/shuffle-a-given-array-using-fisher-yates-shuffle-algorithm/
