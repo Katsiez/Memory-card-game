@@ -49,6 +49,8 @@ class MatchingPups {
     flipCard(card) {
         if(this.canFlipCard(card)) {
             this.audioController.flip();
+            this.totalClicks++;
+            this.ticker.innerText = this.totalClicks;
         }
     }
 
@@ -67,8 +69,8 @@ function ready() {
         overlay.addEventListener('click', () => {
             overlay.classList.remove('visible');
             game.startGame();
-            let audioController = new AudioController();
-            audioController.startMusic();
+            //let audioController = new AudioController();
+            //audioController.startMusic();
         });
     });
     cards.forEach(card => {
