@@ -29,9 +29,11 @@ class AudioController {
         this.stopMusic();
         this.gameOverSound.play();
     }
-
 }
-
+class MatchingPups {
+    constructor(totalTime, cardsArray) {
+        
+}
 
 function ready() {
     let overlays = Array.from(document.getElementsByClassName('overlay-text'));
