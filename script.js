@@ -51,6 +51,7 @@ class MatchingPups {
             this.audioController.flip();
             this.totalClicks++;
             this.ticker.innerText = this.totalClicks;
+            card.classList.add('visible');
         }
     }
 
@@ -67,7 +68,7 @@ function ready() {
 
     overlays.forEach(overlay => {
         overlay.addEventListener('click', () => {
-            overlay.classList.remove('visible');
+            //overlay.classList.remove('visible');
             game.startGame();
             //let audioController = new AudioController();
             //audioController.startMusic();
