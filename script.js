@@ -47,7 +47,7 @@ class MatchingPups {
         this.busy = true;
         this.shuffleCards();
     }
-    
+
     flipCard(card) {
         if(this.canFlipCard(card)) {
             this.audioController.flip();
@@ -83,7 +83,7 @@ function ready() {
 
     overlays.forEach(overlay => {
         overlay.addEventListener('click', () => {
-            //overlay.classList.remove('visible');
+            overlay.classList.remove('visible');
             game.startGame();
             let audioController = new AudioController();
             audioController.startMusic();
