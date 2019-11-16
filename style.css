@@ -83,6 +83,9 @@ body {
 .card.matched .card-value {
     animation: dance 1s linear infinite 500ms;
 }
+.card-mismatch {
+    animation:  blinker 1s linear infinite;
+}
 .overlay-text {
     display: none;
     position: fixed;
@@ -127,6 +130,11 @@ body {
         transform: rotate(30deg);
     }
 }
+@keyframes blinker {
+    50% {
+      opacity: 0;
+    }
+  }
 .card-back {
     background-color: white;
     border-color: palevioletred;
