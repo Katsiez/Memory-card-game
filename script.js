@@ -45,6 +45,9 @@ class MatchingPups {
         this.matchedCards = [];
         this.busy = true;
     }
+    canFlipCard(cards) {
+        return !this.busy && !this.matchedCards.includes(card) && card !== this.cardToCheck;
+    }
 }
 
 function ready() {
