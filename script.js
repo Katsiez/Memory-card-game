@@ -3,7 +3,7 @@ class AudioController {
         this.bgMusic = new Audio('assets/audio/bgmusic.mp3');
         this.bgMusic.volume = 0.5;
         this.bgMusic.loop = true;
-        this.flipSound = new Audio('assets/audio/cardflip.wav');
+        this.flipSound = new Audio('assets/audio/flip.wav');
         this.matchSound = new Audio('assets/audio/match.wav');
         this.victorySound = new Audio('assets/audio/victory.wav');
         this.gameOverSound = new Audio('assets/audio/gameover.wav');
@@ -11,6 +11,25 @@ class AudioController {
     startMusic() {
         this.bgMusic.play();
     }
+    stopMusic() {
+        this.bgMusic.pause();
+        this.bgMusic.currentTime = 0;
+    }
+    flip() {
+       this.flipSound.play(); 
+    }
+    match() {
+        this.matchSound.play();
+    }
+    victory() {
+        this.stopMusic();
+        this.victory.play();
+    }
+    gameOver() {
+        this.stopMusic();
+        this.gameOverSound.play();
+    }
+
 }
 
 
