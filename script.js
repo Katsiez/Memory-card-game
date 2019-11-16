@@ -23,7 +23,7 @@ class AudioController {
     }
     victory() {
         this.stopMusic();
-        this.victory.play();
+        this.victorySound.play();
     }
     gameOver() {
         this.stopMusic();
@@ -126,6 +126,7 @@ class MatchingPups {
         clearInterval(this.countDown);
         this.audioController.victory();
         document.getElementById('victory-text').classList.add('visible');
+        this.hideCards();
     }
 
     //Here I've used quite a few resources; for the shuffle I have used the Fisher-Yates shuffle algorithm, to be found here / https://www.geeksforgeeks.org/shuffle-a-given-array-using-fisher-yates-shuffle-algorithm/
@@ -142,7 +143,9 @@ class MatchingPups {
     }
 
     canFlipCard(cards) {
-      return !this.busy && !this.matchedCards.includes(card) && card !== this.cardToCheck;
+
+        return true;
+      //return !this.busy && !this.matchedCards.includes(card) && card !== this.cardToCheck;
     }
 }
 
