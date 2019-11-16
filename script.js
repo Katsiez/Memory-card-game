@@ -71,7 +71,15 @@ class MatchingPups {
             this.totalClicks++;
             this.ticker.innerText = this.totalClicks;
             card.classList.add('visible');
+
+            if(this.cardToCheck)
+            this.checkforCardMatch(card);
+            else
+                this.cardToCheck = card;
         }
+    }
+    checkforCardMatch(card) {
+        
     }
     startCountDown() {
         return setInterval(() => {
