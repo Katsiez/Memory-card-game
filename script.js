@@ -83,6 +83,8 @@ class MatchingPups {
         this.cardMatch(card, this.cardToCheck);
         else
             this.cardMisMatch(card, this.cardToCheck);
+
+         this.cardToCheck = null;   
     }
     cardMatch(card1, card2) {
         this.matchedCards.push(card1);
@@ -99,6 +101,7 @@ class MatchingPups {
         setTimeout(() => {
             card1.classList.remove('visible');
             card2.classList.remove('visible');
+            this.busy = false;
         }, 1000);
     }
     getCardType(card) {
