@@ -83,8 +83,8 @@ class MatchingPups {
         this.cardMatch(card, this.cardToCheck);
         else
             this.cardMisMatch(card, this.cardToCheck);
-
-         this.cardToCheck = null;   
+            this.cardToCheck = null;   
+            this.audioController.wrong();
     }
     cardMatch(card1, card2) {
         this.matchedCards.push(card1);
@@ -93,10 +93,10 @@ class MatchingPups {
         card2.classList.add('matched');
         this.audioController.match();
 
-        if(this.matchedCards.length ===this.cardsArray)
+        if(this.matchedCards.length ===this.cardsArray.length)
         this.victory();
     }
-    cardMisMatch(card) {
+    cardMisMatch(card1, card2) {
         this.busy = true;
         setTimeout(() => {
             card1.classList.remove('visible');
@@ -142,8 +142,7 @@ class MatchingPups {
     }
 
     canFlipCard(cards) {
-        return true;
-        //return !this.busy && !this.matchedCards.includes(card) && card !== this.cardToCheck;
+      return !this.busy && !this.matchedCards.includes(card) && card !== this.cardToCheck;
     }
 }
 
