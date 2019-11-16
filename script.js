@@ -55,6 +55,19 @@ class MatchingPups {
         }
     }
 
+    //Here I've used quite a few resources; for the shuffle I have used the Fisher-Yates shuffle algorithm, to be found here / https://www.geeksforgeeks.org/shuffle-a-given-array-using-fisher-yates-shuffle-algorithm/
+    //Math.random() function was found here: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+    //After tedious research, my idea was to take the whole array of cards, and with the help of these two create a random shuffling which would make the game even more interesting.
+    //Amongst those resources, I also refered to: https://scotch.io/tutorials/how-to-build-a-memory-matching-game-in-javascript#toc-2-matching-cards 
+    shuffleCards() {
+        for(let i = this.cardsArray.length -1; i > 0; i--) {
+            let randomIndex = Math.floor(Math.random() * (i+1));
+            this.cardsArray[randomIndex].style.order = i;
+            this.cardsArray[i].style.order = randomIndex;
+
+        }
+    }
+
     canFlipCard(cards) {
         return true;
         //return !this.busy && !this.matchedCards.includes(card) && card !== this.cardToCheck;
