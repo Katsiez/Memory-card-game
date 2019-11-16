@@ -85,6 +85,13 @@ class MatchingPups {
         clearInterval(this.countDown);
         this.audioController.gameOver();
         document.getElementById('game-over-text').classList.add('visible');
+        document.getElementById('game-over-text').classList.add('mismatch');
+
+    }
+    victory() {
+        clearInterval(this.countDown);
+        this.audioController.victory();
+        document.getElementById('victory-text').classList.add('visible');
     }
 
     //Here I've used quite a few resources; for the shuffle I have used the Fisher-Yates shuffle algorithm, to be found here / https://www.geeksforgeeks.org/shuffle-a-given-array-using-fisher-yates-shuffle-algorithm/
@@ -109,7 +116,7 @@ class MatchingPups {
 function ready() {
     let overlays = Array.from(document.getElementsByClassName('overlay-text'));
     let cards = Array.from(document.getElementsByClassName('card'));
-    let game = new MatchingPups(60, cards);
+    let game = new MatchingPups(100, cards);
 
     overlays.forEach(overlay => {
         overlay.addEventListener('click', () => {
