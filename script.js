@@ -37,6 +37,7 @@ class MatchingPups {
         this.timeRemaining = totalTime;
         this.timer = document.getElementById('time-remaining');
         this.ticker = document.getElementById('flips');
+        this.audioController = new AudioController();
     } 
     startGame() {
         this.cardToCheck = null;
@@ -45,26 +46,34 @@ class MatchingPups {
         this.matchedCards = [];
         this.busy = true;
     }
+    flipCard(card) {
+        if(this.canFlipCard(card)) {
+            this.audioController.flip();
+        }
+    }
+
     canFlipCard(cards) {
-        return !this.busy && !this.matchedCards.includes(card) && card !== this.cardToCheck;
+        return true;
+        //return !this.busy && !this.matchedCards.includes(card) && card !== this.cardToCheck;
     }
 }
 
 function ready() {
     let overlays = Array.from(document.getElementsByClassName('overlay-text'));
     let cards = Array.from(document.getElementsByClassName('card'));
+    let game = new MatchingPups(100, cards);
 
     overlays.forEach(overlay => {
         overlay.addEventListener('click', () => {
             overlay.classList.remove('visible');
-            // game.startGame();
+            game.startGame();
             let audioController = new AudioController();
             audioController.startMusic();
         });
     });
     cards.forEach(card => {
         card.addEventListener('click', () => {
-            // game.flipCard(card);
+        game.flipCard(card);
         });
     });
 }
