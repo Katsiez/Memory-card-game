@@ -40,6 +40,8 @@ class MatchingPups {
     } 
     startGame() {
         this.cardToCheck = null;
+        this.totalClicks = 0;
+        this.timeRemaining = this.totalTime;
     }
 }
 
