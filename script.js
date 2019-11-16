@@ -95,7 +95,11 @@ class MatchingPups {
         this.victory();
     }
     cardMisMatch(card) {
-
+        this.busy = true;
+        setTimeout(() => {
+            card1.classList.remove('visible');
+            card2.classList.remove('visible');
+        }, 1000);
     }
     getCardType(card) {
         return card.getElementsByClassName('card-value')[0].src;
