@@ -45,7 +45,9 @@ class MatchingPups {
         this.timeRemaining = this.totalTime;
         this.matchedCards = [];
         this.busy = true;
+        this.shuffleCards();
     }
+    
     flipCard(card) {
         if(this.canFlipCard(card)) {
             this.audioController.flip();
@@ -83,8 +85,8 @@ function ready() {
         overlay.addEventListener('click', () => {
             //overlay.classList.remove('visible');
             game.startGame();
-            //let audioController = new AudioController();
-            //audioController.startMusic();
+            let audioController = new AudioController();
+            audioController.startMusic();
         });
     });
     cards.forEach(card => {
