@@ -143,9 +143,8 @@ class MatchingPups {
     }
 
     canFlipCard(cards) {
-
         return true;
-      //return !this.busy && !this.matchedCards.includes(card) && card !== this.cardToCheck;
+       //return !this.busy && !this.matchedCards.includes(card) && card !== this.cardToCheck;
     }
 }
 
