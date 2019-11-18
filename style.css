@@ -22,8 +22,9 @@ body {
 }
 
 .page-title {
-    color: hotpink;
+    color: #f388bc;
     font-family: lobster, serif;
+    font-weight: 500;
     font-weight: normal;
     text-align: center;
     font-size: 6em;
@@ -36,7 +37,7 @@ body {
 }
 
 .game-info {
-    color: #d4f542;
+    color:#b4ff69;
     font-size: 4em;
     font-family: shadow, serif;
 }
@@ -97,8 +98,9 @@ body {
     align-items: center;
     z-index: 100;
     flex-direction: column;
-    color: royalblue;
+    color: #69b4ff;
     font-family: lobster, serif;
+    font-weight: 500;
     transition: background-color 500ms, font-size 500ms;
 }
 .overlay-text-small {
@@ -137,11 +139,11 @@ body {
   }
 .card-back {
     background-color: white;
-    border-color: palevioletred;
+    border-color: hotpink;
 }
 .card-front {
     background-color: white;
-    border-color: rgb(108, 8, 190);
+    border-color: #b4ff69;
     transform: rotateY(180deg);
 }
 
@@ -168,7 +170,9 @@ body {
     .game-container {
       grid-template-columns: repeat(2, auto);
     }
-
+    .overlay-text {
+        object-fit: contain;
+    }
     
 .game-info-container {
     align-items: center;
