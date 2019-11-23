@@ -1,6 +1,6 @@
 # M2-Memory-Card-Game
 Milestone Project 2: Interactive Frontend Development Milestone Project - Code Institute
-# Matching Pups - A playful memory card game
+# Matching Pups - A playful memory card game - PLEASE SCROLL DOWN TO ''HOW TO PLAY'' BEFORE TRYING OUT THE GAME
 
 This is my second project to present to Code Institute. The project highlights a playful memory card game with a variety of cartoon puppies. During the process of working on this second project, I have begun creating multiple ideas, such as another website, quite alike the first project, a meditation app that did not at all turn out to be like I have envisioned it and lastly, I attempted creating a website together with the app, which was simply a mess. Suddenly, sitting at home and creating, working on the project was no longer fun. At that point, I knew I wanted to create something that would instead put a smile on mine, and hopefully other's faces as well. As an avid dog lover, I thought of the ways to implement my playful and less serious side together with an idea.
 
@@ -8,6 +8,13 @@ With that being said, I wanted to, at the same time-work on a project that would
 
 This project is based solely on my imagination and desire to have fun while learning! My inspiration was my own dog and all the childhood memories which I am very fond of. The last thing I wanted to do after a long and exhausting day at work was to work on a boring project and instead, I wanted to have coding as my resort, and the project as something to look forward too. Creating this game has also made me thing of how fun it would have been if I had access to it as a young child. Also, it is pretty relaxing to sit down and play a round after a day at the office.
 
+## HOW TO PLAY
+1. Refresh the browser
+2. Click on ''Click to start''
+3. Start matching whilst being mindful of the timer (100 seconds), ideally you want to aim for as few flips as possible during the time frame
+4. DO NOT flip cards too quickly/agressively, as this will result in the false match
+5. BE PATIENT with the matches, this is a vanialla JS game afterall
+6. Upon completing the round, PLEASE REFRESH THE BROWSER to play again, otherwise the timer will start ticking once again
 
 ## Demo
 A live Demo of the website can be found here https://katsiez.github.io/Memory-card-game/index.html 
