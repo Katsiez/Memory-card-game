@@ -7,6 +7,7 @@ class AudioController {
         this.matchSound = new Audio('assets/audio/match.wav');
         this.victorySound = new Audio('assets/audio/victory.wav');
         this.gameOverSound = new Audio('assets/audio/gameover.wav');
+        //this.wrongSound = new Audio('assets/audio/wrong.wav');
     }
     startMusic() {
         this.bgMusic.play();
@@ -16,11 +17,14 @@ class AudioController {
         this.bgMusic.currentTime = 0;
     }
     flip() {
-       this.flipSound.play(); 
+        this.flipSound.play();
     }
     match() {
         this.matchSound.play();
     }
+    //wrong() {
+       // this.wrongSound.play();
+  //  }
     victory() {
         this.stopMusic();
         this.victorySound.play();
@@ -38,20 +42,19 @@ class MatchingPups {
         this.timer = document.getElementById('time-remaining');
         this.ticker = document.getElementById('flips');
         this.audioController = new AudioController();
-    } 
+    }
     startGame() {
         this.cardToCheck = null;
         this.totalClicks = 0;
         this.timeRemaining = this.totalTime;
         this.matchedCards = [];
         this.busy = true;
-        //this.shuffleCards();
 
         setTimeout(() => {
-           this.audioController.startMusic();
-           this.shuffleCards();
-           this.countDown = this.startCountDown();
-           this.busy = false; 
+            this.audioController.startMusic();
+            this.shuffleCards();
+            this.countDown = this.startCountDown();
+            this.busy = false;
         }, 500);
         this.hideCards();
         this.timer.innerText = this.timeRemaining;
@@ -59,42 +62,42 @@ class MatchingPups {
     }
     hideCards() {
         this.cardsArray.forEach(card => {
-            card.classlist.remove('visible');
+            card.classlist.remove('visible'); //for some reason a capital L here starts playing background music on mouseover//
             card.classList.remove('matched');
-            card.classList.remove('mismatch');
         });
     }
 
     flipCard(card) {
-        if(this.canFlipCard(card)) {
+        if (this.canFlipCard(card)) {
             this.audioController.flip();
             this.totalClicks++;
             this.ticker.innerText = this.totalClicks;
             card.classList.add('visible');
 
-            if(this.cardToCheck)
-            this.checkforCardMatch(card);
+            if (this.cardToCheck)
+                this.checkforCardMatch(card);
             else
                 this.cardToCheck = card;
         }
     }
     checkforCardMatch(card) {
-        if(this.getCardType(card) === this.getCardType(this.cardToCheck))
-        this.cardMatch(card, this.cardToCheck);
+        if (this.getCardType(card) === this.getCardType(this.cardToCheck))
+            this.cardMatch(card, this.cardToCheck);
         else
-            this.cardMisMatch(card, this.cardToCheck);
-            this.cardToCheck = null;   
-            this.audioController.wrong();
+        this.cardMisMatch(card, this.cardToCheck);
+        this.cardToCheck = null;
+        //this.audioController.wrong();
     }
     cardMatch(card1, card2) {
         this.matchedCards.push(card1);
         this.matchedCards.push(card2);
         card1.classList.add('matched');
         card2.classList.add('matched');
+        //this.wrongSound.pause();
         this.audioController.match();
 
-        if(this.matchedCards.length ===this.cardsArray.length)
-        this.victory();
+        if (this.matchedCards.length === this.cardsArray.length)
+            this.victory();
     }
     cardMisMatch(card1, card2) {
         this.busy = true;
@@ -109,24 +112,22 @@ class MatchingPups {
     }
     startCountDown() {
         return setInterval(() => {
-           this.timeRemaining--;
-           this.timer.innerText = this.timeRemaining;
-           if(this.timeRemaining ===0)
-           this.gameOver();  
+            this.timeRemaining--;
+            this.timer.innerText = this.timeRemaining;
+            if (this.timeRemaining === 0)
+                this.gameOver();
         }, 1000);
     }
     gameOver() {
         clearInterval(this.countDown);
         this.audioController.gameOver();
         document.getElementById('game-over-text').classList.add('visible');
-        document.getElementById('game-over-text').classList.add('mismatch');
-
     }
     victory() {
         clearInterval(this.countDown);
         this.audioController.victory();
         document.getElementById('victory-text').classList.add('visible');
-        this.hideCards();
+        this.flipCard(); 
     }
 
     //Here I've used quite a few resources; for the shuffle I have used the Fisher-Yates shuffle algorithm, to be found here / https://www.geeksforgeeks.org/shuffle-a-given-array-using-fisher-yates-shuffle-algorithm/
@@ -134,8 +135,8 @@ class MatchingPups {
     //After tedious research, my idea was to take the whole array of cards, and with the help of these two create a random shuffling which would make the game even more interesting.
     //Amongst those resources, I also refered to: https://scotch.io/tutorials/how-to-build-a-memory-matching-game-in-javascript#toc-2-matching-cards 
     shuffleCards() {
-        for(let i = this.cardsArray.length -1; i > 0; i--) {
-            let randomIndex = Math.floor(Math.random() * (i+1));
+        for (let i = this.cardsArray.length - 1; i > 0; i--) {
+            let randomIndex = Math.floor(Math.random() * (i + 1));
             this.cardsArray[randomIndex].style.order = i;
             this.cardsArray[i].style.order = randomIndex;
 
@@ -144,7 +145,7 @@ class MatchingPups {
 
     canFlipCard(cards) {
         return true;
-       //return !this.busy && !this.matchedCards.includes(card) && card !== this.cardToCheck;
+        //return !this.busy && !this.matchedCards.includes(card) && card !== this.cardToCheck;
     }
 }
 
@@ -163,7 +164,7 @@ function ready() {
     });
     cards.forEach(card => {
         card.addEventListener('click', () => {
-        game.flipCard(card);
+            game.flipCard(card);
         });
     });
 }
