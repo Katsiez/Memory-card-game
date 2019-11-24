@@ -52,7 +52,23 @@ The game is a one-page app, easy to follow with fool-proof rules. It was my goal
 4. Jasmine testing
 
 ## Testing
-The memory card game app is responsive on desktop and multiple devices and in multiple browsers.
+The memory card game app is responsive on desktop and multiple devices and in multiple browsers (it looks awesome in the both iPad&iPad Pro view, which my previous project has not managed to achieve!). Aside from the Jasmine scripts loaded in the html file and commented out, to be used in the browser, please refer to test cases below:
+
+|   Test Cases  |     Steps      |    Status   |
+|---------------|:--------------:|------------:|
+
+|1.User should be able to start game |1.Click on ''Click to Start'' text/button |1.Passed |
+|2.Clicking on ''Click to Start'' text/button hides overlay |2. As 1   |2.Passed |
+|3.Clicking on ''Click to Start'' text/button plays background music |3. As 1 and 2 |3.Passed |
+|4.Hovering over cards transform: translateY(0); paw image |4. Mouseover cards |4.Passed |
+|5.Cards face back if not a match |5. Clicking on a pair of cards, if not a match they flip back automatically |5.Passed |
+|6.Dog woof pplayed if cards a match |6. Clicking on a pair of cards, if a match woof sound plays |6.Passed |
+|7.If cards match, @keyframes dance(css,124) occurs |7. Clicking on a pair of cards, if a match dance occurs |7.Passed |
+|8.If ALL cards match, victory tune plays and the ''Victory'' text overlays|8. Finding all matches by click |8.Passed |
+|9.If ALL cards match, victory tune plays and the ''Victory'' text overlays|9. Finding all matches by click |9.Passed |
+|10.Clicking on the ''Victory'' or "Game Over" text restarts game, cards flip|10.As left|10.Failed, must refresh page, code there, not responding|
+
+
 
 
 ## Deployment
