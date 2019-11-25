@@ -49,12 +49,16 @@ body {
   margin: 50px;
   justify-content: center;
   perspective: 500px;
+  perspective: 1000px;
 }
 
 .card {
   position: relative;
   height: 175px;
   width: 125px;
+  transform-style: preserve-3d;
+  transition: transform .5s;
+
 }
 .card:hover {
   cursor: url("./assets/cursors/pastel.cur"), auto;

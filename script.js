@@ -1,3 +1,36 @@
+const cards = document.querySelectorAll('.card');
+
+let hasFlippedCard = false;
+let firstCard, secondCard;
+
+function flipCard() {
+    this.classList.add('flip');
+
+    if(!hasFlipperCard) {
+        hasFlippedCard = true;
+        firstCard = this;
+    } else {
+        hasFlippedCard = false;
+        secondCard = this;
+
+    //Check if a match//
+    if(firstCard.dataset.framework === secondCard.dataset.framework) {
+        firstCard.removeEventListener('click', flipCard);
+        secondCard.removeEventListener('click', flipCard);
+    } else {
+
+        setTimeout(() => {
+        firstCard.classlist.remove('flip');
+        secondCard.classlist.remove('flip');  
+        }, 1500);
+
+    }
+
+    }
+}
+
+cards.forEach(card => card.addEventListener('click', flipCard));
+
 class AudioController {
     constructor() {
         this.bgMusic = new Audio('assets/audio/bgmusic.mp3');
@@ -122,12 +155,13 @@ class MatchingPups {
         clearInterval(this.countDown);
         this.audioController.gameOver();
         document.getElementById('game-over-text').classList.add('visible');
+        
     }
     victory() {
         clearInterval(this.countDown);
         this.audioController.victory();
         document.getElementById('victory-text').classList.add('visible');
-        this.flipCard(); 
+        
     }
 
     //Here I've used quite a few resources; for the shuffle I have used the Fisher-Yates shuffle algorithm, to be found here / https://www.geeksforgeeks.org/shuffle-a-given-array-using-fisher-yates-shuffle-algorithm/
@@ -152,7 +186,8 @@ class MatchingPups {
 function ready() {
     let overlays = Array.from(document.getElementsByClassName('overlay-text'));
     let cards = Array.from(document.getElementsByClassName('card'));
-    let game = new MatchingPups(100, cards);
+    let game = new MatchingPups(10, cards);
+   
 
     overlays.forEach(overlay => {
         overlay.addEventListener('click', () => {
@@ -173,5 +208,4 @@ if (document.readyState === 'loading') {
 } else {
     ready();
 }
-
 
