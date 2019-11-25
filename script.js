@@ -1,35 +1,61 @@
 const cards = document.querySelectorAll('.card');
 
 let hasFlippedCard = false;
+let lockBoard = false;
 let firstCard, secondCard;
 
+///HERE ADD CONDITION TO AVOID DOUBLE CLICKING ON THE CARDS///
 function flipCard() {
+    if (lockBoard) return;
+    if (this === firstCard) return;
+
+
     this.classList.add('flip');
 
-    if(!hasFlipperCard) {
+    if (!hasFlipperCard) {
         hasFlippedCard = true;
         firstCard = this;
-    } else {
-        hasFlippedCard = false;
-        secondCard = this;
 
-    //Check if a match//
-    if(firstCard.dataset.framework === secondCard.dataset.framework) {
-        firstCard.removeEventListener('click', flipCard);
-        secondCard.removeEventListener('click', flipCard);
-    } else {
+        return;
+    } 
 
-        setTimeout(() => {
+    secondCard = this;
+    checkForMatch();
+    } 
+
+function checkForMatch() {
+    //Check if a match, also remove flipCard EventListener//
+    let isMatch = firstCard.dataset.framework === 
+    secondCard.dataset.framework;
+
+    isMatch ? disableCards() : unflipCards();
+}
+
+function disableCards() {
+    firstCard.removeEventListener('click', flipCard);
+    secondCard.removeEventListener('click', flipCard);
+
+    resetBoard();
+}
+
+function unflipCards() {
+    //not a match
+    lockBoard = true;
+    setTimeout(() => {
         firstCard.classlist.remove('flip');
-        secondCard.classlist.remove('flip');  
-        }, 1500);
+        secondCard.classlist.remove('flip');
 
-    }
-
-    }
+        resetBoard();
+    }, 1500);
+}
+////CONTINUE ON THE CONDITION ALLOWING TO NOT DOUBLE CLICK////
+function resetBoard() {
+    [hasFlippedCard, lockBoard] = [false, false];
+    [firstCard, secondCard] = [null, null];
 }
 
 cards.forEach(card => card.addEventListener('click', flipCard));
+/////////////////////////////////////////////////////////////////
 
 class AudioController {
     constructor() {
@@ -56,8 +82,8 @@ class AudioController {
         this.matchSound.play();
     }
     //wrong() {
-       // this.wrongSound.play();
-  //  }
+    // this.wrongSound.play();
+    //  }
     victory() {
         this.stopMusic();
         this.victorySound.play();
@@ -117,7 +143,7 @@ class MatchingPups {
         if (this.getCardType(card) === this.getCardType(this.cardToCheck))
             this.cardMatch(card, this.cardToCheck);
         else
-        this.cardMisMatch(card, this.cardToCheck);
+            this.cardMisMatch(card, this.cardToCheck);
         this.cardToCheck = null;
         //this.audioController.wrong();
     }
@@ -155,13 +181,13 @@ class MatchingPups {
         clearInterval(this.countDown);
         this.audioController.gameOver();
         document.getElementById('game-over-text').classList.add('visible');
-        
+
     }
     victory() {
         clearInterval(this.countDown);
         this.audioController.victory();
         document.getElementById('victory-text').classList.add('visible');
-        
+
     }
 
     //Here I've used quite a few resources; for the shuffle I have used the Fisher-Yates shuffle algorithm, to be found here / https://www.geeksforgeeks.org/shuffle-a-given-array-using-fisher-yates-shuffle-algorithm/
@@ -187,7 +213,7 @@ function ready() {
     let overlays = Array.from(document.getElementsByClassName('overlay-text'));
     let cards = Array.from(document.getElementsByClassName('card'));
     let game = new MatchingPups(10, cards);
-   
+
 
     overlays.forEach(overlay => {
         overlay.addEventListener('click', () => {
