@@ -1,3 +1,5 @@
+
+
 const cards = document.querySelectorAll('.card');
 
 let hasFlippedCard = false;
@@ -125,7 +127,7 @@ class MatchingPups {
             card.classList.remove('matched');
         });
     }
-
+//////////////////////////////////////////////////////////////////////
     flipCard(card) {
         if (this.canFlipCard(card)) {
             this.audioController.flip();
@@ -137,6 +139,7 @@ class MatchingPups {
                 this.checkforCardMatch(card);
             else
                 this.cardToCheck = card;
+                
         }
     }
     checkforCardMatch(card) {
@@ -166,6 +169,7 @@ class MatchingPups {
             this.busy = false;
         }, 1000);
     }
+    /////////////////////////////////////////////
     getCardType(card) {
         return card.getElementsByClassName('card-value')[0].src;
     }
