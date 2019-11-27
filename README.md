@@ -9,28 +9,27 @@ With that being said, I wanted to, at the same time-work on a project that would
 This project is based solely on my imagination and desire to have fun while learning! My inspiration was my own dog and all the childhood memories which I am very fond of. The last thing I wanted to do after a long and exhausting day at work was to work on a boring project and instead, I wanted to have coding as my resort, and the project as something to look forward too. Creating this game has also made me thing of how fun it would have been if I had access to it as a young child. Also, it is pretty relaxing to sit down and play a round after a day at the office.
 
 ## HOW TO PLAY
+How to play is included in the readme file and not in the browser because I did not want to ruin the appearance. I am aware that a regular user/player won't have access to a readme file, but I did also think that a memory card game is a pretty self-explanatory product. 
+
 1. Refresh the browser
 2. Click on ''Click to start''
-3. Start matching whilst being mindful of the timer (100 seconds), ideally you want to aim for as few flips as possible during the time frame
-4. DO NOT flip cards too quickly/agressively, as this will result in the false match
-5. BE PATIENT with the matches, this is a vanialla JS game afterall
-6. Upon completing the round, PLEASE REFRESH THE BROWSER to play again, otherwise the timer will start ticking once again
+3. You have 100 seconds (pretty generous, right?!) and the unlimited amout of flips per round. However, ideally you want to achieve as many matches, for as few as possible flips, per a 100 seconds. Each time you click on a card, even if it was already flipped, counts as your go - an additional flip. The doubble-clicked card will then flip back. So, don't waste your flip count!
+4. You can flip cards too quickly/agressively, but this action will not result in a match. 
+5. Upon completing the round, PLEASE REFRESH THE BROWSER to play again, this is how both the timer and the number of flips reset to 100 seconds and 0, respectively.
 
 ## Demo
 A live Demo of the website can be found here https://katsiez.github.io/Memory-card-game/index.html 
 
 ## UX
-My goal in the design was to be silly and playful, I take myself seriously way too often and it was starting to take a toll on my project as well. The design is quite early 2000's, together with the choice of fonts, colours and the background, I did want this project to generate positivity and even be a bit childlish. I used a colour picker in order to compliment the colours as much as visually possible however, I left some room for a kitschy and dramatic, high-contrast appearance.
+My goal in the design was to be silly and playful. I take myself seriously way too often and it was starting to take a toll on my mental health as well as show on the project. The design is quite early 2000's, together with the choice of fonts, colours and the background, I did want this project to generate positivity and even be a bit childlish. I used a colour picker in order to compliment the colours as much as visually possible however, I left some room for a kitschy and dramatic, high-contrast appearance. 
 
--As a user type, I wanted to provide for a playful, easy to play and silly little memory card game. To avoid poor UX, I decided to keep the game a simple one-page experience. The rules are simple; get a pair of matching pups and you're on your way towards a victory!
+-As a user type, I wanted to provide for a playful, easy to play and silly little memory card game. Both parents and the kids are more than welcome to play a round! To avoid poor UX, I decided to keep the game a simple one-page experience. The rules are simple; get a pair of matching pups and you're on your way towards a victory!
 
 -Each and every single card flip counts, there is both a Timer on the upper left corner above the card deck (set to 100s) and a Flip score, in the right hand corner. 
 
--The game is carried out with background music, each time the user flips a card the game generates a card flipping sound, as well as a bark sound when a pair is matched. 100 seconds seems like a long time to complete the game, but I have included quite a few pairs, some of which resemble each other on purpose, so that the game becomes more complicated.
+-The game is carried out with background music, each time the user flips a card the game generates a card flipping sound, as well as a dog bark sound when a pair is matched. 100 seconds seems like a long time to complete the game, but I have included quite a few pairs, some of which resemble each other on purpose, so that the game becomes more complicated.
 
--A victory calls for an encouraging tune at the end of the game, while a loss generates another tune, the same one being generated when the timer hits 0.
-
--It is important for user to know to be patient with the game. Double clicking on the same card and flipping them too fast creates a false victory. This however, only happens from time to time. It is important to refresh the page after having played a round, so that the cards flip back. 
+-A victory calls for an encouraging tune at the end of the game, while a game over generates another tune, the same one being generated when the timer hits 0.
 
 ### Wireframes:
 
@@ -44,6 +43,7 @@ The game is a one-page app, easy to follow with fool-proof rules. It was my goal
 -I would like to include ''intruders'' or animals that are not dogs/puppies. I tried doing this with svgs of a llama and hedgehog but I am not yet familiar with how to manipulate JS to generate a Game Over reaction when those particular cards are being matched. I tried assigning those images a different class in html and css, but it was not as successful as I had hoped. 
 -Make the app a bit more responsive, maybe show 4, instead of 2 cards in a row. I am however, weary of the fact that the cards would become too tiny to be played without accidentally clicking on the neighbouring ones.
 -Create a pop-up message explaining the game rules, although the game is quite simple.
+-Should I ever wish to achieve an even more dramatic effect, I could include a ''wrong'' sound each time 2 non-matching cards are flipped. 
 
 ## Technologies used:
 1. HTML
@@ -73,10 +73,9 @@ The memory card game app is responsive on desktop and multiple devices and in mu
 
 |8.If ALL cards match, victory tune plays and the ''Victory'' text overlays|8. Finding all matches by click |8.Passed |
 
-|9.If ALL cards match, victory tune plays and the ''Victory'' text overlays|9. Finding all matches by click |9.Passed |
+|9.If NOT ALL cards match, game over tune plays and the ''Game Over'' text overlays|9. NOT finding all matches by click |9.Passed |
 
 |10.Clicking on the ''Victory'' or "Game Over" text restarts game, cards flip|10.As left|10.Failed, must refresh page, code there, not responding|
-
 
 
 
@@ -89,7 +88,7 @@ To run locally, you can clone this repository directly into the editor of your c
 ## Credits
 
 ### Content
-A simple Google search would reveal literally thousands of memory card game projects however, this particular idea to make it so it matches cute puppies, was entirely my own. I refered to this website: (Scotch tutorials) [https://scotch.io/tutorials/how-to-build-a-memory-matching-game-in-javascript#toc-2-matching-cards for the Fisher-Yates shuffle algorithm] (which was quite difficult to grasp and implement), and I have as well read the material on here: (Free Code Camp) [https://www.freecodecamp.org/news/vanilla-javascript-tutorial-build-a-memory-game-in-30-minutes-e542c4447eae/] when trying to figure out the logistics behind the JS for a project like this. Hoever, these provided an overall idea, while I decided on implementing completely different effects. Other than that, I decided to manipulate most effects via CSS, just because it is much more effective and fun to implement. 
+A simple Google search would reveal literally thousands of memory card game projects however, this particular idea to make it so it matches cute puppies, was entirely my own. I refered to this website: (Scotch tutorials) [https://scotch.io/tutorials/how-to-build-a-memory-matching-game-in-javascript#toc-2-matching-cards for the Fisher-Yates shuffle algorithm] (which was quite difficult to grasp and implement), and I have as well read the material on here: (Free Code Camp) [https://www.freecodecamp.org/news/vanilla-javascript-tutorial-build-a-memory-game-in-30-minutes-e542c4447eae/] when trying to figure out the logistics behind the JS for a project like this. Hoever, these provided an overall idea, while I decided on implementing completely different effects. Other than that, I decided to manipulate most effects via CSS, just because it is much more effective and fun to implement. The main inspiration was my own dog. 
 
 ### Media
 All photos were taken from [Pexels](https://www.pexels.com/) and the 2 cursors were taken from (Real World Graphics) [http://www.rw-designer.com/], SVGs were retrived from (Flaticon) [https://www.flaticon.com/home]
