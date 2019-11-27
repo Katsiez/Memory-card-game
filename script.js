@@ -66,7 +66,7 @@ class MatchingPups {
             card.classList.remove('matched');
         });
     }
-//////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////
     flipCard(card) {
         if (this.canFlipCard(card)) {
             this.audioController.flip();
@@ -78,17 +78,17 @@ class MatchingPups {
                 this.checkforCardMatch(card);
             else
                 this.cardToCheck = card;
-                
+
         }
     }
     checkforCardMatch(card) {
         //if (this.getCardType(card) === this.getCardType(this.cardToCheck))
         if (card !== this.cardToCheck && this.getCardType(card) === this.getCardType(this.cardToCheck)) {
             this.cardMatch(card, this.cardToCheck);
-            
-     } else
+
+        } else
             this.cardMisMatch(card, this.cardToCheck);
-            this.cardToCheck = null;
+        this.cardToCheck = null;
         //this.audioController.wrong();
     }
     cardMatch(card1, card2) {
