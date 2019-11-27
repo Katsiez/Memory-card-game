@@ -143,11 +143,13 @@ class MatchingPups {
         }
     }
     checkforCardMatch(card) {
-        if (this.getCardType(card) === this.getCardType(this.cardToCheck))
+        //if (this.getCardType(card) === this.getCardType(this.cardToCheck))
+        if (card !== this.cardToCheck && this.getCardType(card) === this.getCardType(this.cardToCheck)) {
             this.cardMatch(card, this.cardToCheck);
-        else
+            
+     } else
             this.cardMisMatch(card, this.cardToCheck);
-        this.cardToCheck = null;
+            this.cardToCheck = null;
         //this.audioController.wrong();
     }
     cardMatch(card1, card2) {
@@ -216,12 +218,13 @@ class MatchingPups {
 function ready() {
     let overlays = Array.from(document.getElementsByClassName('overlay-text'));
     let cards = Array.from(document.getElementsByClassName('card'));
-    let game = new MatchingPups(10, cards);
+    //let game = new MatchingPups(10, cards);
 
 
     overlays.forEach(overlay => {
         overlay.addEventListener('click', () => {
             overlay.classList.remove('visible');
+            game = new MatchingPups(100, cards);
             game.startGame();
             let audioController = new AudioController();
             audioController.startMusic();
