@@ -1,64 +1,3 @@
-
-
-const cards = document.querySelectorAll('.card');
-
-let hasFlippedCard = false;
-let lockBoard = false;
-let firstCard, secondCard;
-
-///HERE ADD CONDITION TO AVOID DOUBLE CLICKING ON THE CARDS///
-function flipCard() {
-    if (lockBoard) return;
-    if (this === firstCard) return;
-
-
-    this.classList.add('flip');
-
-    if (!hasFlipperCard) {
-        hasFlippedCard = true;
-        firstCard = this;
-
-        return;
-    } 
-
-    secondCard = this;
-    checkForMatch();
-    } 
-
-function checkForMatch() {
-    //Check if a match, also remove flipCard EventListener//
-    let isMatch = firstCard.dataset.framework === 
-    secondCard.dataset.framework;
-
-    isMatch ? disableCards() : unflipCards();
-}
-
-function disableCards() {
-    firstCard.removeEventListener('click', flipCard);
-    secondCard.removeEventListener('click', flipCard);
-
-    resetBoard();
-}
-
-function unflipCards() {
-    //not a match
-    lockBoard = true;
-    setTimeout(() => {
-        firstCard.classlist.remove('flip');
-        secondCard.classlist.remove('flip');
-
-        resetBoard();
-    }, 1500);
-}
-////CONTINUE ON THE CONDITION ALLOWING TO NOT DOUBLE CLICK////
-function resetBoard() {
-    [hasFlippedCard, lockBoard] = [false, false];
-    [firstCard, secondCard] = [null, null];
-}
-
-cards.forEach(card => card.addEventListener('click', flipCard));
-/////////////////////////////////////////////////////////////////
-
 class AudioController {
     constructor() {
         this.bgMusic = new Audio('assets/audio/bgmusic.mp3');
@@ -127,7 +66,7 @@ class MatchingPups {
             card.classList.remove('matched');
         });
     }
-//////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////
     flipCard(card) {
         if (this.canFlipCard(card)) {
             this.audioController.flip();
@@ -139,17 +78,17 @@ class MatchingPups {
                 this.checkforCardMatch(card);
             else
                 this.cardToCheck = card;
-                
+
         }
     }
     checkforCardMatch(card) {
         //if (this.getCardType(card) === this.getCardType(this.cardToCheck))
         if (card !== this.cardToCheck && this.getCardType(card) === this.getCardType(this.cardToCheck)) {
             this.cardMatch(card, this.cardToCheck);
-            
-     } else
+
+        } else
             this.cardMisMatch(card, this.cardToCheck);
-            this.cardToCheck = null;
+        this.cardToCheck = null;
         //this.audioController.wrong();
     }
     cardMatch(card1, card2) {
